@@ -1,0 +1,38 @@
+---> For Students
+There will be a home page where user can login and signup. 
+
+--> During signup the user have to give his 
+    registration number 
+    phone number
+    roll no
+    name
+    branch name
+    session year
+    password.
+
+
+--> User can login by his registration number and password.
+
+After login and the user can navigate to the various books available in the library. 
+The student can register the book and take the book from the library.
+A student can take maximum four books. 
+
+--> There will be a search option by which the user can find the books available in the book store. There will be adding option and that's it.
+
+After that there will be return book option from which the user can return the book. 
+
+--> There will be contact s option from which a user will report issue.
+
+---> For admin
+
+--> There will be a login and signup page by which a admin will login. 
+
+--> The admin will add different books. There will be a option to add books, 
+It will contain, 
+
+1. Book name
+2. Book Sno alloted by the college
+3. Book author name
+4. Book Quantity (Admin can increase or decrease the Quantity any time)
+
+--> There will be book approval option from where the admin will approve the books(It can be made in the form of tables).
