@@ -7,10 +7,13 @@
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['password'])) {
-                
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['registration'] = $registration;
+            header("Location: /library/index.php?loginStatus=true");
         }
         else {
-            echo "error";
+            header("Location: /library/index.php?loginStatus=false");
         }
     }
 ?>
