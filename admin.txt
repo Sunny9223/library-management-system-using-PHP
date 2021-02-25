@@ -1,0 +1,1 @@
+The username and the password for admin is admin.
