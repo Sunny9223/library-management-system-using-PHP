@@ -24,7 +24,8 @@ After that there will be return book option from which the user can return the b
 --> There will be contact s option from which a user will report issue.
 
 ---> For admin
-
+Username for admin is admin 
+Password for admin is admin
 --> There will be a login and signup page by which a admin will login. 
 
 --> The admin will add different books. There will be a option to add books, 
