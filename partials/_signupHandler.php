@@ -17,19 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $sql = "INSERT INTO `student_details`(`registration`, `roll`, `phone`, `name`, `email`, `branch`, `session`, `password`) VALUES ('$registration', '$roll', '$phone', '$name', '$email', '$branch', '$session', '$hash')";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
-                    header("Location: /library/index.php?signupsuccess=true");
+                    header("Location: /index.php?signupsuccess=true");
                 } else {
-                    header("Location: /library/index.php?signuperror=user");
+                    header("Location: /index.php?signuperror=user");
                 }
             } else {
-                header("Location: /library/index.php?signuperror=wpass");
+                header("Location: /index.php?signuperror=wpass");
             }
         }
         else {
-            header("Location: /library/index.php?branch=error");
+            header("Location: /index.php?branch=error");
         }
     }
     else {
-        header("Location: /library/index.php?empty=error");
+        header("Location: /index.php?empty=error");
 } 
 }

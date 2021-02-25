@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql = "DELETE FROM `issued_books` WHERE `issued_books`.`bookSno` = '$bookSno'";
             $result = mysqli_query($conn, $sql);
             if ($result) {
-                header("Location: /library/returnBook.php?success=success");
+                header("Location: /returnBook.php?success=success");
             }
             else {
-                header("Location: /library/returnBook.php?success=error");
+                header("Location: /returnBook.php?success=error");
             }
         }
     }

@@ -11,10 +11,10 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['student'] = true;
             $_SESSION['registration'] = $registration;
-            header("Location: /library/bookList.php?loginStatus=true");
+            header("Location: /bookList.php?loginStatus=true");
         }
         else {
-            header("Location: /library/index.php?loginStatus=false");
+            header("Location: /index.php?loginStatus=false");
         }
     }
 ?>

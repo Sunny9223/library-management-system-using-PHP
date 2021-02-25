@@ -20,7 +20,7 @@
     <?php
     session_start();
     if ($_SESSION['admin'] != true) {
-        header("Location: /library");
+        header("Location: /");
     }
     ?>
     <?php include 'partials/_navbar.php'; 

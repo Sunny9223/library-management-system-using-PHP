@@ -13,15 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "UPDATE `issued_books` SET `status` = '1' WHERE `issued_books`.`sno` = '$sno';";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            header("Location: /library/dashboard.php?issueReport=success");
+            header("Location: /dashboard.php?issueReport=success");
         }
     }    
     else {
-        header("Location: /library/dashboard.php?bookSno=repeat");
+        header("Location: /dashboard.php?bookSno=repeat");
     }
 }
 else {
-    header("Location: /library/dashboard.php?bookSno=error");
+    header("Location: /dashboard.php?bookSno=error");
 }
 }
 ?>

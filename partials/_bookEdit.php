@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $sql = "UPDATE `books` SET `quantity` = '$quantity' WHERE `books`.`sno` = '$sno';";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
-                    header("Location: /library/bookDetails.php?edit=success");
+                    header("Location: /bookDetails.php?edit=success");
                 }
             }
         }

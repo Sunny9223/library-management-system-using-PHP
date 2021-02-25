@@ -8,7 +8,7 @@
         $sql = "UPDATE `issued_books` SET `status` = '2' WHERE `issued_books`.`bookSno` = '$bookSno';";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            header("Location: /library/issuedBook.php?returnStatus=success");
+            header("Location: /issuedBook.php?returnStatus=success");
         }
     }
     ?>

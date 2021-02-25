@@ -19,7 +19,7 @@
     <?php
     session_start();
     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || $_SESSION['student'] != true) {
-        header("location: /library");
+        header("location: /");
         exit;
     }
     ?>
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $returnStatus = $_GET['returnStatus'];
         if ($returnStatus == 'success') {
             echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-        <strong>Success!</strong> PLease wait until you are confirmed by the college.
+        <strong>Success!</strong> Please wait until you are confirmed by the college.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
         }
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Book Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

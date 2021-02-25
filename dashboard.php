@@ -19,7 +19,7 @@
     <?php
     session_start();
     if ($_SESSION['dashboard'] != true) {
-        header("Location: /library");
+        header("Location: /");
     }
     ?>
     <?php include 'partials/_navbar.php'; ?>

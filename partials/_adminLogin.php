@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['admin'] = true;
             $_SESSION['dashboard'] = true;
             $_SESSION['username'] = $username;
-            header("Location: /library/dashboard.php");
+            header("Location: /dashboard.php");
         } else {
-            header("Location: /library/index.php?adminPass=false");
+            header("Location: /index.php?adminPass=false");
         }
     }
 }

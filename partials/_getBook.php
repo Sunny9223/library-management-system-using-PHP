@@ -15,18 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result = mysqli_query($conn, $check);
             $row = mysqli_num_rows($result);
             if ($row > 3) {
-                header("Location: /library/bookList.php?getBook=error");
+                header("Location: /bookList.php?getBook=error");
             }
             else{
             $sql = "INSERT INTO `issued_books`(`registration`, `name`, `status`) VALUES ('$registration', '$name', '0')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
-                header("Location: /library/bookList.php?getBook=success");
+                header("Location: /bookList.php?getBook=success");
             }
         }
         }
     }
     else if ($quantity == 0) {
-        header("Location: /library/bookList.php?getBook=notAvailable");
+        header("Location: /bookList.php?getBook=notAvailable");
     }
 }

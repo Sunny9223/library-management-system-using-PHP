@@ -3,7 +3,7 @@
 <?php
     session_start();
     if ($_SESSION['admin'] != true) {
-        header("Location: /library");
+        header("Location: /");
     }
     ?>
 
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/library/partials/_bookEdit.php" method="POST">
+                <form action="/partials/_bookEdit.php" method="POST">
                 <div class="modal-body">
                 <input type="hidden" name="snoEdit" id="snoEdit">
                     <div class="mb-3">

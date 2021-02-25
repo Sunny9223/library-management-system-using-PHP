@@ -12,18 +12,18 @@
             $sql = "INSERT INTO `books`(`book`, `author`, `branch`, `quantity`) VALUES ('$book', '$author', '$branch', '$quantity')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
-                header("Location: /library/bookAdd.php?bookAdd=added");
+                header("Location: /bookAdd.php?bookAdd=added");
             }   
             else {
-                header("Location: /library/bookAdd.php?bookAdd=error");
+                header("Location: /bookAdd.php?bookAdd=error");
             }
         }
         else{   
-        header("Location: /library/bookAdd.php?empty=error");
+        header("Location: /bookAdd.php?empty=error");
         }
     }
     else {
-        header("Location: /library/bookAdd.php?branch=error");
+        header("Location: /bookAdd.php?branch=error");
     }
 }
 ?>

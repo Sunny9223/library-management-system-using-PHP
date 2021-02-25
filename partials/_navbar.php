@@ -36,7 +36,7 @@ else if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && isset(
 else{
     echo '
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/library">Home</a>
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
     </li>
 </ul>';
 }
