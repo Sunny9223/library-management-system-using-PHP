@@ -26,7 +26,8 @@
     <?php include 'partials/_navbar.php'; ?>
     <?php
     $loginStatus = 'none';
-
+    $signupsuccess = 'none';
+    $signuperror = 'none';
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['loginStatus'])) {
         $loginStatus = $_GET['loginStatus'];
         if ($loginStatus == 'true') {
@@ -37,6 +38,49 @@
         } else if ($loginStatus == 'false') {
             echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
             <strong>Error!</strong> Registration number or password is incorrect.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['adminPass'])) {
+        $adminPass = $_GET['adminPass'];
+        if ($adminPass == 'false') {
+            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            <strong>Error!</strong> Username or password is incorrect.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (isset($_GET['signuperror']))  {
+            $signuperror = $_GET['signuperror'];
+            if ($signuperror == 'user') {
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+            <strong>Error!</strong> User already exists.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+            }
+            else if($signuperror == 'wpass'){
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+            <strong>Error!</strong> Password doesnot matched.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+            }
+        }
+        if (isset($_GET['signupsuccess']))  {
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+            <strong>Success!</strong> Account created successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+        if (isset($_GET['logout']) == 'success')  {
+                echo '<div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+            <strong>Success!</strong> Logged out successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+        if (isset($_GET['adminlogout']) == 'success')  {
+                echo '<div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+            <strong>Success!</strong> Logged out successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
         }
     }
@@ -126,10 +170,9 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="text-center" style="padding: 20px; background: black; color: white;">All rights reserved | 2021
-        </div>
-    </footer>
+    <?php
+        include 'partials/_footer.php';
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
 </body>
