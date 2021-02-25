@@ -24,15 +24,34 @@
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (isset($_GET['bookAdd'])) {
-                if (isset($_GET['bookAdd']) == 'true') {
+
+                if ($_GET['bookAdd'] == "error") {
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong>  Book with same name already available.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>';
+                }
+                else if ($_GET['bookAdd'] == "added") {
                     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Success!</strong> Added a book successfully.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>';
                 }
-                else if (isset($_GET['bookAdd']) == 'false') {
+            }
+            if (isset($_GET['branch'])) {
+
+                if ($_GET['branch'] == "error") {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Error!</strong> Something went wrong.
+                    <strong>Error!</strong>  Please choose a branch.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>';
+                }
+            }
+            if (isset($_GET['empty'])) {
+
+                if ($_GET['empty'] == "error") {
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong>  Please fillup all the fields.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>';
                 }
@@ -47,10 +66,6 @@
                 <input type="text" class="form-control" name="book" id="exampleFormControlInput1"
                     placeholder="Enter the name of the Book">
             </div>
-            <!-- <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Sno of the book</label>
-                <input type="text" class="form-control" name="snoBook" id="exampleFormControlInput1">
-            </div> -->
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Author Name</label>
                 <input type="text" class="form-control" name="author" id="exampleFormControlInput1"

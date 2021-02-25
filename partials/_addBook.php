@@ -2,17 +2,28 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         include '_dbconnect.php';
         $book = $_POST['book'];
-        $snoBook = $_POST['snoBook'];
+        // $snoBook = $_POST['snoBook'];
         $author = $_POST['author'];
         $branch = $_POST['branch'];
-        $quantity = $_POST['quantity']; 
-        $sql = "INSERT INTO `books`(`book`, `author`, `branch`, `quantity`) VALUES ('$book', '$author', '$branch', '$quantity')";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-            header("Location: /library/bookAdd.php?bookAdd=true");
+        $quantity = $_POST['quantity'];
+        if ($branch != "Choose your Branch") {
+            if (!empty($_POST['book']) && !empty($_POST['author']) && !empty($_POST['quantity'])) {
+
+            $sql = "INSERT INTO `books`(`book`, `author`, `branch`, `quantity`) VALUES ('$book', '$author', '$branch', '$quantity')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                header("Location: /library/bookAdd.php?bookAdd=added");
+            }   
+            else {
+                header("Location: /library/bookAdd.php?bookAdd=error");
+            }
         }
-        else {
-            header("Location: /library/bookAdd.php?bookAdd=false");
+        else{   
+        header("Location: /library/bookAdd.php?empty=error");
         }
     }
+    else {
+        header("Location: /library/bookAdd.php?branch=error");
+    }
+}
 ?>

@@ -16,6 +16,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && isset($_SES
     <li class="nav-item">
         <a class="nav-link" href="bookAdd.php">Add a Book</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="returnBook.php">Return</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="bookDetails.php">All Books</a>
+    </li>
 </ul>';
 }
 else if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && isset($_SESSION['student']) && $_SESSION['student'] == true) {
@@ -119,7 +125,7 @@ else{
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Signup</button>
                                 </div>
                             </div>
                         </form>
@@ -158,7 +164,7 @@ else{
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                         </div>
                     </form>

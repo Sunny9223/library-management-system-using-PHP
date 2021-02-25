@@ -3,14 +3,12 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $registration = $_POST['registration'];
     $name = $_POST['nameEdit'];
-    // echo $snoBook = $_POST['snoBookEdit'];
     $author = $_POST['authorEdit'];
     $quantity = $_POST['quantityEdit'];
     if ($quantity > 0) {
         include '_dbconnect.php';
         $amount = $quantity - 1;
-        $amount;
-        $changeSQL = "UPDATE `books` SET `quantity` = '$amount' WHERE `books`.`book`= 'C' AND `books`.`author`='$author'";
+        $changeSQL = "UPDATE `books` SET `quantity` = '$amount' WHERE `books`.`book`= '$name' AND `books`.`author`='$author'";
         $changeResult = mysqli_query($conn, $changeSQL);
         if ($changeResult) {
             $check = "SELECT * FROM `issued_books` WHERE `registration`='$registration'";

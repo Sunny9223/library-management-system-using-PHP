@@ -35,6 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       </div>';
         }
     }
+    if (isset($_GET['bookSno']))  {
+        $bookSno = $_GET['bookSno'];
+        if ($bookSno == 'error') {
+            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+        <strong>Error!</strong> Please provide the book serial number.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+        }
+        if ($bookSno == 'repeat') {
+            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+        <strong>Error!</strong> This sno book is already distributed.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+        }
+    }
 }
 
 ?>

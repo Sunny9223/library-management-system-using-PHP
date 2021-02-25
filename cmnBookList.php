@@ -17,88 +17,11 @@
 </head>
 
 <body>
-    <?php
-    session_start();
-    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true || $_SESSION['student'] != true) {
-        header("location: /library");
-        exit;
-    }
-    ?>
+    
     <?php include 'partials/_navbar.php'; ?>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getBook'])) {
-        $getBook = $_GET['getBook'];
-        if ($getBook == 'success') {
-            echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-                <strong>Success!</strong> Issued Successfully.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-        }
-        if ($getBook == 'notAvailable') {
-            echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-                <strong>Error!</strong> Book is not in Stock.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-        }
-        if ($getBook == 'error') {
-            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
-                <strong>Error!</strong> You have already issued 4 books.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-        }
-    }
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['loginStatus'])) {
-        $loginStatus = $_GET['loginStatus'];
-        if ($loginStatus == 'true') {
-            echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-                <strong>Success!</strong> Loggedin successfully.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-        } else if ($loginStatus == 'false') {
-            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
-                <strong>Error!</strong> Registration number or password is incorrect.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-        }
-    }
-    ?>
+   
 
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="partials/_getBook.php" method="POST">
-                <div class="modal-body">
-                <input type="hidden" name="snoEdit" id="snoEdit">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Name</label>
-                        <input type="text" readonly class="form-control" name="nameEdit" id="nameEdit">
-                    </div>
-                    <?php $registration = $_SESSION['registration']; ?>
-                        <input type="hidden" name="registration" value="<?php echo $registration; ?>">
-                        
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Author</label>
-                        <input type="text" readonly class="form-control" id="authorEdit" name="authorEdit">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Quantity</label>
-                        <input type="text" readonly class="form-control" id="quantityEdit" name="quantityEdit">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Grab</button>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
-
-
-    <!-- <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -107,6 +30,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
+                <form action="partials/_getBook.php" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name="snoEdit" id="snoEdit">
                         <div class="form-group">
@@ -115,6 +39,11 @@
                         </div>
                         <?php $registration = $_SESSION['registration']; ?>
                         <input type="hidden" name="registration" value="<?php echo $registration; ?>">
+
+                        <!-- <div class="form-group">
+                            <label for="title" hidden>Sno Book</label>
+                            <input type="text" hidden class="form-control" id="snoBookEdit" name="snoBookEdit" aria-describedby="emailHelp">
+                        </div> -->
                         <div class="form-group">
                             <label for="title">Author Name </label>
                             <input type="text" readonly class="form-control" id="authorEdit" name="authorEdit" aria-describedby="emailHelp">
@@ -131,9 +60,9 @@
                 </form>
             </div>
         </div>
-    </div> -->
+    </div>
 
-
+   
     <div class="container my-4">
         <h2 class="text-center">
             List of Books
@@ -141,34 +70,30 @@
         <table class="table" id="myTable">
             <thead>
                 <tr>
-                    <th scope="col" hidden>Name</th>
+                    <th scope="col">S.No.</th>
                     <th scope="col">Name</th>
                     <th scope="col">Author</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include "partials/_dbconnect.php";
-                $sql = "SELECT * FROM `student_details` WHERE `registration`='$registration'";
+                $bid = $_GET['bid'];
+                $sql = "SELECT * FROM `books` WHERE branch='$bid'";
                 $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_assoc($result);
-                $branch = $row['branch'];
-                $sql = "SELECT * FROM `books` WHERE branch='$branch'";
-                $result = mysqli_query($conn, $sql);
+                $sno = 0;
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $sno = $row['sno'];
+                    $sno = $sno + 1;
                     $username = $row['book'];
                     // $report = $row['snoBook'];
                     $quantity = $row['quantity'];
                     echo '<tr>
                     <input type="hidden" name="snoEdit" id="snoEdit">
-                    <th scope="row" hidden>' . $row["sno"] . '</th>
+                    <th scope="row">' . $sno . '</th>
                     <td scope="row">' . $row["book"] . '</td>
                     <td>' . $row["author"] . '</td>
                     <td>' . $row["quantity"] . '</td>
-                <td><button type="submit" class="edit btn-sm btn-danger">Grab</button></td>
               </tr>';
                 }
                 ?>
@@ -202,8 +127,7 @@
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 
 </html>

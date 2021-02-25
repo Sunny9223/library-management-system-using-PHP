@@ -65,6 +65,24 @@
           </div>';
             }
         }
+        if (isset($_GET['branch']))  {
+            $branch = $_GET['branch'];
+            if ($branch == 'error') {
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            <strong>Error!</strong> Please choose your branch.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+            }
+        }
+        if (isset($_GET['empty']))  {
+            $empty = $_GET['empty'];
+            if ($empty == 'error') {
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            <strong>Error!</strong> Please fillup all the fields.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+            }
+        }
         if (isset($_GET['signupsuccess']))  {
                 echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
             <strong>Success!</strong> Account created successfully.
@@ -132,7 +150,7 @@
                         <img src="img/cse.png" width="268px" alt="">
                         <h5 class="card-title">Computer Science Engineering</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="cmnBookList.php?bid=1" class="btn btn-primary">Search</a>
                     </div>
                 </div>
             </div>
@@ -142,7 +160,7 @@
                         <img src="img/mechanical.png" width="268px" alt="">
                         <h5 class="card-title">Mechanical Engineering</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="cmnBookList.php?bid=2" class="btn btn-primary">Search</a>
                     </div>
                 </div>
             </div>
@@ -154,7 +172,7 @@
                         <img src="img/metallurgy.png" width="268px" alt="">
                         <h5 class="card-title">Metallurgy Engineering</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="cmnBookList.php?bid=4" class="btn btn-primary">Search</a>
                     </div>
                 </div>
             </div>
@@ -164,7 +182,7 @@
                         <img src="img/electrical.png" width="268px" alt="">
                         <h5 class="card-title">Electrical Engineering</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="cmnBookList.php?bid=3" class="btn btn-primary">Search</a>
                     </div>
                 </div>
             </div>
